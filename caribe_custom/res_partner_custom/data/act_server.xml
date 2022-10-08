@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="act_append_category" model="ir.actions.server">
+        <field name="name">Marcar Prospecto</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="res_partner_custom.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">
+for c in record:
+  category = env['res.partner.category'].search([('id', '=', 2)])
+  # raise Warning(category)
+  c.update({'category_id': category})
+        </field>
+    </record>
+</odoo>

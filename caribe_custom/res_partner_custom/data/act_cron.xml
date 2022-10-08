@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="ir_cron_notes_contacts" model="ir.cron">
+        <field name="name">Actualizar notas de contactos</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+        <field name="state">code</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="res_partner_custom.model_res_partner"/>
+        <field name="code">
+contacts = model.search([('updated', '=', False)],limit=2)
+for c in contacts:
+  c.write({'comment': datetime.datetime.now()})
+  c.write({'updated': True})
+
+# Para reiniciar
+# contacts = model.search([('updated', '=', True)])
+# for c in contacts:
+#   c.write({'comment': ""})
+#   c.write({'updated': False})
+        </field>
+    </record>
+</odoo>

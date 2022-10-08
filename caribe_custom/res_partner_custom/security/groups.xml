@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="can_adm_phone_numbers" model="res.groups">
+            <field name="name">Administración de teléfonos</field>
+            <field name="comment">Permiso para administrar telefonos</field>
+        </record>
+    </data>
+</odoo>
