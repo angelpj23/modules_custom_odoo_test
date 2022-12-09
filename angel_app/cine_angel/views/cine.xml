@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        View Tree-->
+        <record id="cine_view_tree" model="ir.ui.view">
+            <field name="name">cine_view_tree</field>
+            <field name="model">cine</field>
+            <field name="arch" type="xml">
+                <tree string="cine_tree" decoration-danger="state == 'draft'">
+                    <field name="name" attrs="{'required': True}"/>
+                    <field name="premiere" optional="show"/>
+                    <field name="category"/>
+                    <field name="calification" string="Calificacion" widget="priority" optional="hide"/>
+                    <field name="state" string="Estado" optional="hide" widget="badge"
+                           decoration-info="state == 'draft'"
+                           decoration-success="state == 'posted'"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        View Kanban-->
+        <record id="cine_view_kanban" model="ir.ui.view">
+            <field name="name">cine_view_kanban</field>
+            <field name="model">cine</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <field name="name" attrs="{'required': True}"/>
+                    <field name="premiere"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('cine','image',record.id.raw_value)" alt="image"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <div class="o_kanban_record_top">
+                                        <div class="o_kanban_record_headings">
+                                            <strong class="o_kanban_record_tittle oe_partner_heading">
+                                                <field name="name"/>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="o_kanban_record_headings">
+                                            <strong class="o_kanban_record_tittle oe_partner_heading">
+                                                <field name="premiere"/>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!--        View form-->
+        <record id="cine_view_form" model="ir.ui.view">
+            <field name="name">cine_view_form</field>
+            <field name="model">cine</field>
+            <field name="arch" type="xml">
+                <form string="cine_form">
+                    <header>
+                        <button name="posted_movie" string="Estrenar" type="object" states="draft"/>
+                        <button name="cancel_movie" string="Cancelar" type="object" states="draft,posted"/>
+                        <button name="reload_movie" string="Reelanzar" type="object" states="cancel"/>
+                        <!--  clickable: Para poder gestionar la barra de estado   -->
+                        <field name="state" widget="statusbar" options="{'clickable':1}"/>
+                    </header>
+                    <sheet>
+                        <field name="image" widget="image" class="oe_image"/>
+                        <group>
+                            <field name="name" attrs="{'required': True}"/>
+                            <field name="premiere"/>
+                            <field name="category"/>
+                            <field name="description"/>
+                            <field name="link_triller" widget="url" string="Ver Trailer"/>
+                            <!--                            mientras mas grupos, menos columnas de espacio ocupara el campo-->
+                            <group>
+                                <group>
+                                    <field name="director"/>
+                                    <field name="image_director" widget="image" class="oe_avatar"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="cast">
+                                    <tree>
+                                        <field name="name" widget="Many2many_tags"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="calification" string="Calificacion" widget="priority"/>
+                            <field name="price"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!--        Filters-->
+        <record id="cine_view_filter" model="ir.ui.view">
+            <field name="name">cine_view_filter</field>
+            <field name="model">cine</field>
+            <field name="arch" type="xml">
+                <search>
+                    <!--                    busqueda-->
+                    <field name="name" string="Pelicula"/>
+                    <field name="premiere" string="Fecha de estreno"/>
+                    <!--                    filtro-->
+                    <filter name="category" string="Peliculas de accion" domain="[('category', '=', 'Accion')]"/>
+                    <!--                    agrupar-->
+                    <group string="Agrupar por" colspan="12" col="10">
+                        <filter name="category" string="Categoria" context="{'group_by':'category'}"/>
+                    </group>
+                    <searchpanel>
+                        <field name="category" string="Categorias" icon="fa-users"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+        <!--        Buttom Action-->
+        <record id="cine_action" model="ir.actions.act_window">
+            <field name="name">Cine Angel</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cine</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+        <record id="config_action" model="ir.actions.act_window">
+            <field name="name">Configuracion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cine</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--        Menu Item-->
+        <menuitem name="Cine Angel" id="cine_menu"/>
+        <menuitem name="Cartelera" id="cine_angel_menu" parent="cine_menu" action="cine_action"/>
+        <menuitem name="Configuracion" id="config_angel_menu" parent="cine_menu" action="config_action" sequence="100"/>
+    </data>
+</odoo>

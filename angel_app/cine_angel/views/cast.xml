@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        View Tree-->
+        <record id="cast_view_tree" model="ir.ui.view">
+            <field name="name">cast_view_tree</field>
+            <field name="model">cine.cast</field>
+            <field name="arch" type="xml">
+                <tree string="cast_tree">
+                    <field name="name" attrs="{'required': True}"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        View form-->
+        <record id="cast_view_form" model="ir.ui.view">
+            <field name="name">cast_view_form</field>
+            <field name="model">cine.cast</field>
+            <field name="arch" type="xml">
+                <form string="cast_form">
+                    <sheet>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar"/>
+                            <field name="name" attrs="{'required': True}"/>
+                            <field name="active"/>
+                            <field name="biography"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Buttom Action-->
+        <record id="cast_action" model="ir.actions.act_window">
+            <field name="name">Elenco</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cine.cast</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--        Menu Item-->
+        <menuitem name="Elenco" id="cast_angel_menu" parent="config_angel_menu" action="cast_action"/>
+
+        <!--        Director-->
+
+        <!--        View Tree-->
+        <record id="director_view_tree" model="ir.ui.view">
+            <field name="name">director_view_tree</field>
+            <field name="model">cine.director</field>
+            <field name="arch" type="xml">
+                <tree string="director_tree">
+                    <field name="name"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        View form-->
+        <record id="director_view_form" model="ir.ui.view">
+            <field name="name">director_view_form</field>
+            <field name="model">cine.director</field>
+            <field name="arch" type="xml">
+                <form string="director_form">
+                    <sheet>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar"/>
+                            <field name="name" attrs="{'required': True}"/>
+                            <field name="active"/>
+                            <field name="biography"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Buttom Action-->
+        <record id="director_action" model="ir.actions.act_window">
+            <field name="name">Directores</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cine.director</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--        Menu Item-->
+        <menuitem name="Directores" id="director_angel_menu" parent="config_angel_menu" action="director_action"/>
+    </data>
+</odoo>

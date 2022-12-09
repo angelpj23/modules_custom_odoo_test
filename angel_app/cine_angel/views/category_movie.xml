@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        View Tree-->
+        <record id="category_view_tree" model="ir.ui.view">
+            <field name="name">category_view_tree</field>
+            <field name="model">cine.category</field>
+            <field name="arch" type="xml">
+                <tree string="category_tree">
+                    <field name="name" attrs="{'required': True}"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        View form-->
+        <record id="category_view_form" model="ir.ui.view">
+            <field name="name">category_view_form</field>
+            <field name="model">cine.category</field>
+            <field name="arch" type="xml">
+                <form string="category_form">
+                    <sheet>
+                        <group>
+                            <field name="name" attrs="{'required': True}"/>
+                            <field name="active"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Buttom Action-->
+        <record id="category_action" model="ir.actions.act_window">
+            <field name="name">Categorias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cine.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--        Menu Item-->
+        <menuitem name="Categorias" id="category_angel_menu" parent="config_angel_menu" action="category_action"/>
+    </data>
+</odoo>

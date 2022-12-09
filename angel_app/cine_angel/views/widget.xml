@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="widget_view_form" model="ir.ui.view">
+            <field name="name">widget_view_form</field>
+            <field name="model">widgets.custom</field>
+            <field name="arch" type="xml">
+                <form string="widget_form">
+                    <sheet>
+                        <group>
+                            <field name="widget1" string="Progreso" widget="progressbar"/>
+                            <field name="widget2" string="Medidor" widget="gauge"
+                                   options="{'max_field': 'target_goal', 'label_field': 'definition_suffix', 'style': 'width:160px; height: 120px;'}"/>
+                            <field name="widget3" string="Prioridad" widget="priority"/>
+                            <field name="widget4" string="Booleano Favorito" widget="boolean_favorite"/>
+                            <field name="widget5" string="Total" widget="monetary"/>
+                            <field name="widget6" string="Seleccion radio" widget="radio"/>
+                            <field name="widget7" string="Estado" widget="state_selection"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Buttom Action-->
+        <record id="widgets_action" model="ir.actions.act_window">
+            <field name="name">Widgets</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">widgets.custom</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <!--        Menu Item-->
+        <menuitem name="Widgets" id="widget_angel_menu" parent="config_angel_menu" action="widgets_action"/>
+    </data>
+</odoo>

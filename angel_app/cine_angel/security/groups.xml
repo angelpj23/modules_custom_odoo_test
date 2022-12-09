@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="cine_category" model="ir.module.category">
+            <field name="name">Cine</field>
+            <field name="sequence" eval="100"/>
+        </record>
+        <record id="cine_security" model="res.groups">
+            <field name="name">Usuario de cine</field>
+            <field name="category_id" ref="cine_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cine_user,access_cine,model_cine,cine_angel.cine_security,1,1,1,1
+access_cine_category_user,access_cine_category,model_cine_category,cine_angel.cine_security,1,1,1,1
+access_cine_cast_user,access_cine_cast,model_cine_cast,cine_angel.cine_security,1,1,1,1
+access_cine_director_user,access_cine_director,model_cine_director,cine_angel.cine_security,1,1,1,1
+access_widgets_custom_user,access_widgets_custom,model_widgets_custom,cine_angel.cine_security,1,1,1,1
