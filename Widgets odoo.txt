@@ -1,0 +1,8 @@
+                            <field name="widget1" string="Progreso" widget="progressbar"/>
+                            <field name="widget2" string="Medidor" widget="gauge"
+                                   options="{'max_field': 'target_goal', 'label_field': 'definition_suffix', 'style': 'width:160px; height: 120px;'}"/>
+                            <field name="widget3" string="Prioridad" widget="priority"/>
+                            <field name="widget4" string="Booleano Favorito" widget="boolean_favorite"/>
+                            <field name="widget5" string="Total" widget="monetary"/>
+                            <field name="widget6" string="Seleccion radio" widget="radio"/>
+                            <field name="widget7" string="Estado" widget="state_selection"/>

@@ -1,0 +1,25 @@
+Colores:
+grey
+decoration-muted=""
+
+red
+decoration-danger=""
+
+green
+decoration-success=""
+
+purple
+decoration-primary=""
+
+blue
+decoration-info=""
+
+brown
+decoration-warning=""
+
+Tipo de letra
+bold
+decoration-bf=""
+
+italic
+decoration-it=""
