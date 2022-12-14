@@ -91,6 +91,7 @@
                                 <field name="cast">
                                     <tree>
                                         <field name="name" widget="Many2many_tags"/>
+                                        <!-- widget="many2many_tags" nolabel="1" -->
                                     </tree>
                                 </field>
                             </group>
