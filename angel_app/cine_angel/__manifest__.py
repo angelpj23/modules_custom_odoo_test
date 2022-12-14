@@ -6,7 +6,8 @@
     'version': '14.0.0.1',
     'depends':
         [
-            'mail'
+            'mail',
+            'stock'
         ],
     'data':
         [

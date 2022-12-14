@@ -15,6 +15,6 @@ class ResPartner(models.Model):
         for contact in self:
             customer = contact.id
             invoices = self.env['account.move'].search(
-                [('partner_id.id', '=', customer), ('state', '=', 'posted'),
+                [('partner_id.id', '=', customer), ('journal_id', '=', 1), ('state', '=', 'posted'),
                  ('payment_state', 'in', ['not_paid', 'partial'])])
             contact.total_debt = (sum(invoices.mapped('amount_total_signed')))

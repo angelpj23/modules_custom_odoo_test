@@ -73,11 +73,13 @@
                     <sheet>
                         <field name="image" widget="image" class="oe_image"/>
                         <group>
-                            <field name="name" attrs="{'required': True}"/>
-                            <field name="premiere"/>
-                            <field name="category"/>
-                            <field name="description"/>
-                            <field name="link_triller" widget="url" string="Ver Trailer"/>
+                            <group>
+                                <field name="name" attrs="{'required': True}"/>
+                                <field name="premiere"/>
+                                <field name="category"/>
+                                <field name="description"/>
+                                <field name="link_triller" widget="url" string="Ver Trailer"/>
+                            </group>
                             <!--                            mientras mas grupos, menos columnas de espacio ocupara el campo-->
                             <group>
                                 <group>
@@ -91,7 +93,6 @@
                                 <field name="cast">
                                     <tree>
                                         <field name="name" widget="Many2many_tags"/>
-                                        <!-- widget="many2many_tags" nolabel="1" -->
                                     </tree>
                                 </field>
                             </group>
