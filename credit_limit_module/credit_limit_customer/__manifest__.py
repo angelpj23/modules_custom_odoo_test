@@ -6,7 +6,7 @@
     'author': "Angel_pj23",
     'website': "",
     'category': 'Customizations',
-    'version': '14.0.0.1',
+    'version': '12.0.0.1',
 
     'depends': [
         'base',
