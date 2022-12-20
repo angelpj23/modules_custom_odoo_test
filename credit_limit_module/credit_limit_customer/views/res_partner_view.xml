@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='button_box']"
                        position="inside">
-                    <button name="total_debt" class="oe_stat_button" icon="fa-pencil-square-o" attrs="{'invisible': [('active_limit', '!=', True)]}">
+                    <button name="total_debt" class="oe_stat_button" icon="fa-pencil-square-o">
                         <div class="o_form_field o_stat_info">
                             <span class="o_stat_value">
                                 <field name="total_debt" widget='monetary'
@@ -25,7 +25,7 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//page[@name='sales_purchases']//field[@name='team_id']"
+                <xpath expr="//page[@name='sales_purchases']//field[@name='property_payment_term_id']"
                        position="after">
                     <field name="active_limit"/>
                     <field name="credit_limit" attrs="{'invisible': [('active_limit', '=', False)]}"/>

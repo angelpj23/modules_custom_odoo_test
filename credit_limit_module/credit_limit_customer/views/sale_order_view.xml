@@ -4,11 +4,10 @@
         <record id="credit_limit_view_order_form" model="ir.ui.view">
             <field name="name">credit.limit.sale.order.form</field>
             <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="inherit_id" ref="sale.view_order_form" />
             <field name="arch" type="xml">
-                <xpath expr="//group[@name='sale_header']/group[@name='order_details']/field[@name='payment_term_id']"
-                       position="after">
-                    <field name="applied_credit_limit" attrs="{'invisible':True}"/>
+                <xpath expr="//group/group/field[@name='payment_term_id']" position="after">
+                    <field name="applied_credit_limit" attrs="{'invisible':True}" />
                 </xpath>
             </field>
         </record>
