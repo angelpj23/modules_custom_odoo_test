@@ -27,7 +27,7 @@ class ResPartner(models.Model):
                 [
                     ('partner_id.id', '=', customer),
                     ('journal_id', '=', 1),
-                    ('state', 'in', ['posted', 'in_payment']),
+                    ('state', 'in', ['open', 'in_payment']),
                 ]
             )
-            contact.total_debt = sum(invoices.mapped('amount_total_signed'))
+            contact.total_debt = sum(invoices.mapped('residual_signed'))
